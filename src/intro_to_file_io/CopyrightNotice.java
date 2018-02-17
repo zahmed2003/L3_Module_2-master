@@ -30,7 +30,7 @@ public class CopyrightNotice
 			fileName = jfc.getSelectedFile().getAbsolutePath();
 			try {
 				fw = new FileWriter(fileName, true);
-				fw.write("// Copyright Zahir Ahmed 2018");
+				fw.write("//Copyright © 2018 by Zahir Ahmed");
 				fw.close();
 			} catch (IOException e) {
 				
