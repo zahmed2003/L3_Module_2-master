@@ -28,37 +28,17 @@ public class CopyrightNotice
 		int returnVal = jfc.showOpenDialog(null);
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			fileName = jfc.getSelectedFile().getAbsolutePath();
-			
 			try {
-				fw = new FileWriter(fileName);
-				
-				br = new BufferedReader(new FileReader(fileName));
-				
-				try {
-					BufferedReader br = new BufferedReader(new FileReader("src/intro_to_file_io/test.txt"));
-					
-					String line = br.readLine();
-					while(line != null){
-						System.out.println(line);
-						line = br.readLine();
-					}
-					
-					br.close();
-				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
+				fw = new FileWriter(fileName, true);
+				fw.write("// Copyright Zahir Ahmed 2018");
 				fw.close();
-				
 			} catch (IOException e) {
 				
 				e.printStackTrace();
 			}
+					
 		}
 	}
 	
-}
+	}
+
