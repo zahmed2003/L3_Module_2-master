@@ -21,6 +21,10 @@ public class ListTracker implements ActionListener
 	JButton save = new JButton();
 	JButton load = new JButton();
 	
+	int currentNum = 0;
+	String formatted;
+	
+	
 	JFrame frame = new JFrame();
 	
 	JPanel panel = new JPanel();
@@ -97,6 +101,19 @@ public class ListTracker implements ActionListener
 	
 	
 	}
+	
+	public String formatList(ArrayList<String> list)
+	{
+		String format = null;
+		
+		for(String i: list)
+		{
+			currentNum+=1;
+			format = format + System.lineSeparator() + "Task #" + currentNum + ": " + i;
+		}
+		
+		return format;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -120,7 +137,7 @@ public class ListTracker implements ActionListener
 		if(e.getSource().equals(save))
 		{
 			try {
-				printList = list.toString();
+				printList = formatList(list);
 				fw = new FileWriter("src/intro_to_file_io/ToDolist");
 				fw.write(printList);
 				fw.close();
