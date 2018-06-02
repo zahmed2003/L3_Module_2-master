@@ -2,6 +2,7 @@ package intro_to_file_io;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -22,6 +23,8 @@ public class MessageSaver {
 	{
 		message = JOptionPane.showInputDialog("Insert Message Here");
 	}
+	
+
 	
 	public void messageSaver() {
 		try {
