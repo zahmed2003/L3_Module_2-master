@@ -18,7 +18,12 @@ public class MessageSaver
 	public String getMessage()
 	{
 		String s = JOptionPane.showInputDialog("Insert a Message here");
-		return s;
+		String s2 = "";
+		
+		for (char c : s.toCharArray()) {
+			   s2 += Character.toString((char) (((c - 'a' + 1) % 26) + 'a'));
+			}
+		return s2;
 	}
 	
 	public void saveMessage(String s)

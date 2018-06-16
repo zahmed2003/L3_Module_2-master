@@ -10,38 +10,58 @@ import javax.swing.JOptionPane;
 
 public class MessageSelector 
 {
-public static void main(String[] args) {
 	
+	FileReader fr;
+	JFileChooser jfc;
+	
+public static void main(String[] args) {
+	MessageSelector ms = new MessageSelector();
+	System.out.println(ms.selectMessage());
 }
 
-
-public void selectMessage()
+public String selectMessage()
 {
-		BufferedReader br;
-		try {
-			br = new BufferedReader(new FileReader("src/intro_to_file_ioII/message"));
-			
-			String line;
-			try {
-				line = br.readLine();
-				
-				while(line != null)
+		jfc = new JFileChooser();
+		String message = null;
+		
+		int returnValue = jfc.showOpenDialog(null);
+		if(returnValue == JFileChooser.APPROVE_OPTION)
+		{
+			try 
+			{
+				fr = new FileReader(jfc.getSelectedFile().getAbsolutePath());
+				int c;
+				try {
+					c = fr.read();
+					while(c != -1)
+					{
+						message = message + (char)c;
+					}
+					fr.close();
+				} 
+				catch (IOException e) 
 				{
-					System.out.println(line);
-					line = br.readLine();
+					e.printStackTrace();
 				}
-				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
+			} 
+			catch (FileNotFoundException e) 
+			{
 				e.printStackTrace();
 			}
-			
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		
+		return message;
 }
 
+
+public String decryptMessage(String message)
+{
+	String decrypt = null;
+	for (char c : message.toCharArray()) 
+		{
+		   decrypt += Character.toString((char) (((c + 'a' + 1) % 26) - 'a'));
+		}
+	
+	return decrypt;
+}
 
 }

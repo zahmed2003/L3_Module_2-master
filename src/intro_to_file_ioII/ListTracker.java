@@ -1,3 +1,5 @@
+//Copyright © 2018 by Zahir Ahmed
+
 package intro_to_file_ioII;
 
 import java.awt.event.ActionEvent;
